@@ -37,6 +37,10 @@ ecr_repo_name   = "my-app-ecr"
 #### 3. Initialize Terraform
 ```bash
 terraform init
+terraform init \
+  -backend-config="bucket=YOUR_BUCKET_NAME" \
+  -backend-config="key=avin-test.tfstae" \
+  -backend-config="region=AWS_REGION"
 ```
 ####  4. Plan Terraform deployment
 ```bash
