@@ -25,17 +25,18 @@ jobs:
 
       - name: Terraform Init
         run: |
+          cd Aws-EKS
           terraform init \
             -backend-config="bucket=${{ secrets.S3_BUCKET_NAME }}" \
             -backend-config="key=${{ secrets.STATE_FILE_NAME }}" \
             -backend-config="region=${{ secrets.AWS_REGION }}"
 
       - name: Terraform Validate
-        run: terraform validate
+        run: cd Aws-EKS && terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: cd Aws-EKS && terraform plan -out=tfplan
 
       # - name: Terraform Apply
       #   if: github.ref == 'refs/heads/main'
-      #   run: terraform apply -auto-approve tfplan
+      #   run: cd Aws-EKS && terraform apply -auto-approve tfplan
