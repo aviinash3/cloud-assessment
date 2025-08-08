@@ -37,6 +37,5 @@ jobs:
       - name: Terraform Plan
         run: cd Aws-EKS && terraform plan -out=tfplan
 
-      # - name: Terraform Apply
-      #   if: github.ref == 'refs/heads/main'
-      #   run: cd Aws-EKS && terraform apply -auto-approve tfplan
+      - name: Terraform Apply
+        run: cd Aws-EKS && terraform apply -auto-approve tfplan
